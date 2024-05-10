@@ -113,6 +113,30 @@ body {
     line-height: 5px;
 }
 
+.bg-toDoList {
+    background-color: #259198;
+}
+
+.btn-toDoList {
+    background-color: rgb(230,120,153);
+    border-color: #40316d;
+    color: #cefcff;
+}
+
+    .btn-toDoList:hover {
+        background-color: rgb(182, 96, 122);
+        border-color: #40316d;
+        color: #cefcff;
+    }
+
+    .btn-toDoList::after {
+        content: " \F7D8";
+        font-family: "bootstrap-icons";
+        font-size: 15px;
+        margin-right: 4px;
+        vertical-align: bottom
+    }
+
 .btn-search {
     background-color: #a181f4;
     border-color: #5e479f;
@@ -151,3 +175,24 @@ body {
         margin-right: 4px;
         vertical-align: bottom
     }
+
+.btn-back {
+    background-color: #e34949;
+    border-color: #9f4747;
+    color: #ffe3e3;
+}
+
+    .btn-back:hover {
+        background-color: #af3e3e;
+        border-color: #833636;
+        color: #ffe3e3;
+    }
+
+    .btn-back::before {
+        content: "\F131";
+        font-family: "bootstrap-icons";
+        font-size: 15px;
+        margin-right: 4px;
+        vertical-align: bottom
+    }
+
