@@ -1,0 +1,99 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #3a0067;
+    color: #f2dccc;
+}
+
+.navbar-toDo {
+    background-color: #3a0067;
+}
+
+.nav-link {
+    color: #f2dccc;
+    border: 1px solid #7200ca;
+    margin-left: 1rem;
+    padding: 1rem 4rem 1rem 4rem
+}
+
+    .nav-link:hover {
+        color: #f2dccc;
+        border: 1px solid #8000e2;
+    }
+
+.card {
+    color: #f2dccc !important;
+    background-color: #3a0067;
+    border-radius: 20px !important;
+}
+
+.borderDoing {
+    border: solid 1px #fc01ff !important;
+    border-radius: 20px !important
+}
+.borderDone {
+    border: solid 1px #e40d4e !important
+}
+
+    .doing {
+        background: rgb(230,120,153);
+        background: linear-gradient(0deg, rgba(230,120,153,1) 0%, rgba(145,64,207,1) 100%);
+    }
+    .doing .cardStatus {
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        background-color: #7c27b7;
+    }
+
+
+.done {
+    background: rgb(230,167,120);
+    background: linear-gradient(180deg, rgba(230,167,120,1) 0%, rgba(182,46,87,1) 100%);
+}
+    .done .cardStatus {
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        background-color: #e05a82;
+    }
+
+.card-body textarea {
+    resize: none;
+    background-color: transparent;
+    border: 1px solid #969696;
+    outline: none;
+    padding: 1rem;
+    color: #f2dccc
+}
+
+
+
+    .card-body textarea:focus {
+        border: 1px solid #969696;
+    }
+
+.btn-cardInfo {
+    color: #f2dccc !important;
+    text-decoration: none;
+}
+
+.cardDate {
+    line-height: 5px;
+}
