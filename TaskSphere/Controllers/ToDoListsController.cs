@@ -10,7 +10,8 @@ public class ToDoListsController : Controller
         new ToDoList {ToDoListId = 1, TaskName = "Criar Controller", TaskDescription = "Criação do Controller", TaskStatus = "Em Andamento", TaskType = "Work" },
         new ToDoList {ToDoListId = 2, TaskName = "Academia", TaskDescription = "Ir a Academia", TaskStatus = "Em Andamento", TaskType = "Saúde" },
         new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade" },
-        new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot Longo", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade" },
+        new ToDoList {ToDoListId = 4, TaskName = "Projeto SpringBoot Longo", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade" },
+
     };
 
     public IActionResult Index()
