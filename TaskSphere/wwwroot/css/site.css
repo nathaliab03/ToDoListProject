@@ -9,7 +9,21 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem rgba(145,64,207,1);
+}
+
+.form-control, .form-control:focus, select {
+    background-color: rgba(145,64,207,0.2);
+    color: #f2dccc !important;
+    border: 1px solid rgba(145,64,207,1);
+}
+
+placeholder {
+    color: #f2dccc !important;
+}
+
+textarea {
+    resize: none
 }
 
 html {
@@ -97,3 +111,23 @@ body {
 .cardDate {
     line-height: 5px;
 }
+
+.btn-search {
+    background-color: #a181f4;
+    border-color: #5e479f;
+    color: #ffefe3;
+}
+
+    .btn-search:hover {
+        background-color: #6e2ad3;
+        border-color: #5e479f;
+        color: #ffe3e3;
+    }
+
+    .btn-search::before {
+        content: "\F52A";
+        font-family: "bootstrap-icons";
+        font-size: 15px;
+        margin-right: 4px;
+        vertical-align: bottom
+    }

@@ -24,7 +24,7 @@ namespace TaskSphere.Models
         [Display(Name = "Data de Início")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Required]
-        public DateOnly? StartDate { get; set; }
+        public DateOnly StartDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
 
         [Display(Name = "Data de Conclusão")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]

@@ -7,15 +7,32 @@ public class ToDoListsController : Controller
 {
     private static List<ToDoList> _toDoLists = new List<ToDoList>()
     {
-        new ToDoList {ToDoListId = 1, TaskName = "Criar Controller", TaskDescription = "Criação do Controller", TaskStatus = "Em Andamento", TaskType = "Work", StartDate = new DateOnly(2024, 2, 25) },
-        new ToDoList {ToDoListId = 2, TaskName = "Academia", TaskDescription = "Ir a Academia", TaskStatus = "Em Andamento", TaskType = "Saúde", StartDate = new DateOnly(2024, 2, 25) },
-        new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade", StartDate = new DateOnly(2024, 2, 25) },
-        new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot Longo", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade", StartDate = new DateOnly(2024, 2, 25) },
+        new ToDoList {ToDoListId = 1, TaskName = "Criar Controller", TaskDescription = "Criação do Controller", TaskStatus = "Em Andamento", TaskType = "Work" },
+        new ToDoList {ToDoListId = 2, TaskName = "Academia", TaskDescription = "Ir a Academia", TaskStatus = "Em Andamento", TaskType = "Saúde" },
+        new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade" },
+        new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot Longo", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade" },
     };
 
     public IActionResult Index()
     {
         return View(_toDoLists);
+    }
+
+    public IActionResult Search(string search, string status)
+    {
+        var items = from i in _toDoLists select i;
+
+        if (!string.IsNullOrEmpty(search))
+        {
+            items = items.Where(i => i.TaskName.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        if(!string.IsNullOrEmpty(status))
+        {
+            items = _toDoLists.Where(t => t.TaskStatus == status);
+        }
+
+        return View("Index", items.ToList());
     }
 
     [HttpGet]
