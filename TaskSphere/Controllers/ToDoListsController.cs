@@ -7,10 +7,10 @@ public class ToDoListsController : Controller
 {
     private static List<ToDoList> _toDoLists = new List<ToDoList>()
     {
-        new ToDoList {ToDoListId = 1, TaskName = "Criar Controller", TaskDescription = "Criação do Controller", TaskStatus = "Em Andamento", TaskType = "Work" },
-        new ToDoList {ToDoListId = 2, TaskName = "Academia", TaskDescription = "Ir a Academia", TaskStatus = "Em Andamento", TaskType = "Saúde" },
-        new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade" },
-        new ToDoList {ToDoListId = 4, TaskName = "Projeto SpringBoot Longo", TaskDescription = "Projeto Faculdade", TaskStatus = "Concluida", TaskType = "Faculdade" },
+        new ToDoList {ToDoListId = 1, TaskName = "Criar Controller", TaskDescription = "Criação do Controller", TaskType = "Work"},
+        new ToDoList {ToDoListId = 2, TaskName = "Academia", TaskDescription = "Ir a Academia", TaskType = "Saúde"},
+        new ToDoList {ToDoListId = 3, TaskName = "Projeto SpringBoot", TaskDescription = "Projeto Faculdade", TaskType = "Faculdade"},
+        new ToDoList {ToDoListId = 4, TaskName = "Projeto SpringBoot Longo", TaskDescription = "Projeto Faculdade", TaskType = "Faculdade"},
 
     };
 
@@ -19,7 +19,7 @@ public class ToDoListsController : Controller
         return View(_toDoLists);
     }
 
-    public IActionResult Search(string search, string status)
+    public IActionResult Search(string search, bool? status)
     {
         var items = from i in _toDoLists select i;
 
@@ -28,9 +28,9 @@ public class ToDoListsController : Controller
             items = items.Where(i => i.TaskName.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
-        if(!string.IsNullOrEmpty(status))
+        if(status.HasValue)
         {
-            items = _toDoLists.Where(t => t.TaskStatus == status);
+            items = _toDoLists.Where(t => t.IsCompleted == status.Value);
         }
 
         return View("Index", items.ToList());
@@ -74,10 +74,8 @@ public class ToDoListsController : Controller
             {
                 existingToDoList.TaskName = toDoList.TaskName;
                 existingToDoList.TaskDescription = toDoList.TaskDescription;
-                existingToDoList.TaskStatus = toDoList.TaskStatus;
                 existingToDoList.TaskType = toDoList.TaskType;
                 existingToDoList.StartDate = toDoList.StartDate;
-                existingToDoList.EndDate = toDoList.EndDate;
             }
             return RedirectToAction("Index");
         }
@@ -105,17 +103,20 @@ public class ToDoListsController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult DoingTask() {
-
-        var doingTask = _toDoLists.Where(t => t.TaskStatus == "Em Andamento").ToList();
-
-        return View(doingTask);
-    }
-
-    public IActionResult TaskDone()
+    public IActionResult ToggleTaskStatus(int id)
     {
-        var doneTask = _toDoLists.Where(t => t.TaskStatus == "Concluida").ToList();
+        var task = _toDoLists.FirstOrDefault(t => t.ToDoListId == id);
+        if (task != null)
+        {
+            task.ToggleTaskStatus();
+            task.SetEndDate();
+        } else
+        {
+            task.EndDate = null;
+        }
 
-        return View(doneTask);
+
+        return RedirectToAction("Index");
     }
+
 }

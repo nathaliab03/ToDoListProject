@@ -1,3 +1,73 @@
 ﻿@model ToDoList
 
-@Model.TaskName
+<div class="container p-4 viewIndex text-center">
+    <h1>Detalhes da Categoria</h1>
+
+    <table class="table col-2 table-hover">
+        <tr class="row">
+            <th scope="col" class="text-end col-sm-6">
+                @Html.DisplayNameFor(model => model.ToDoListId)
+            </th>
+
+            <td scope="col" class="text-start col-sm-6">
+                @Html.DisplayFor(model => model.ToDoListId)
+            </td>
+        </tr>
+
+        <tr class="row">
+            <th scope="col" class="text-end col-sm-6">
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+
+            <td scope="col" class="text-start col-sm-6">
+                @Html.DisplayFor(model => model.TaskName)
+            </td>
+        </tr>
+
+        <tr class="row">
+            <th scope="col" class="text-end col-sm-6">
+                @Html.DisplayNameFor(model => model.TaskDescription)
+            </th>
+
+            <td scope="col" class="text-start col-sm-6">
+                @Html.DisplayFor(model => model.TaskDescription)
+            </td>
+        </tr>
+
+        <tr class="row">
+            <th scope="col" class="text-end col-sm-6">
+                @Html.DisplayNameFor(model => model.TaskStatus)
+            </th>
+
+            <td scope="col" class="text-start col-sm-6">
+                @Html.DisplayFor(model => model.TaskStatus)
+            </td>
+        </tr>
+
+
+        <tr class="row">
+            <th scope="col" class="text-end col-sm-6">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+
+            <td scope="col" class="text-start col-sm-6">
+                @Html.DisplayFor(model => model.StartDate)
+            </td>
+        </tr>
+
+        <tr class="row">
+            <th scope="col" class="text-end col-sm-6">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+
+            <td scope="col" class="text-start col-sm-6">
+                @Html.DisplayFor(model => model.EndDate)
+            </td>
+        </tr>
+    </table>
+
+    <div class="row">
+        <a asp-action="Edit" class="btn btn-create mb-1 " asp-route-id="@Model?.ToDoListId">Editar</a>
+        <a asp-action="Index" class="btn btn-back ">Voltar à Lista</a>
+    </div>
+</div>

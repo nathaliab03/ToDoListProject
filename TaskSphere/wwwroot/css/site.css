@@ -18,12 +18,17 @@ html {
     border: 1px solid rgba(145,64,207,1);
 }
 
-    .form-select option {
-        background-color: rebeccapurple;
+    .form-control option {
+        background-color: rebeccapurple !important;
     }
 
 placeholder {
     color: #f2dccc !important;
+}
+
+table th, table td {
+    color: #f2dccc;
+    border-none
 }
 
 textarea {
@@ -137,6 +142,26 @@ body {
         vertical-align: bottom
     }
 
+.btn-create {
+    background-color: #b978e6;
+    border-color: #5e479f;
+    color: #40316d;
+}
+
+    .btn-create:hover {
+        background-color: #9e5fcb;
+        border-color: #5e479f;
+        color: #40316d;
+    }
+
+    .btn-create::before {
+        content: " \F7D8 ";
+        font-family: "bootstrap-icons";
+        font-size: 15px;
+        margin-right: 4px;
+        vertical-align: bottom
+    }
+
 .btn-search {
     background-color: #a181f4;
     border-color: #5e479f;
@@ -156,20 +181,60 @@ body {
         margin-right: 4px;
         vertical-align: bottom
     }
-.btn-backDelete {
+.btn-back {
     background-color: #e38349;
     border-color: #9f6e47;
     color: #ffe3e3;
 }
 
-    .btn-backDelete:hover {
+    .btn-back:hover {
         background-color: #d37e2a;
         border-color: #9f6e47;
         color: #ffe3e3;
     }
 
-    .btn-backDelete::before {
+    .btn-back::before {
         content: "\F131";
+        font-family: "bootstrap-icons";
+        font-size: 15px;
+        margin-right: 4px;
+        vertical-align: bottom
+    }
+
+.btn-delete {
+    background-color: #e38349;
+    border-color: #9f6e47;
+    color: #ffe3e3;
+}
+
+    .btn-delete:hover {
+        background-color: #d37e2a;
+        border-color: #9f6e47;
+        color: #ffe3e3;
+    }
+
+    .btn-delete::before {
+        content: "\F131";
+        font-family: "bootstrap-icons";
+        font-size: 15px;
+        margin-right: 4px;
+        vertical-align: bottom
+    }
+
+.btn-clear {
+    background-color: #e5a577;
+    border-color: #9f6e47;
+    color: #ffe3e3;
+}
+
+    .btn-clear:hover {
+        background-color: #d37e2a;
+        border-color: #9f6e47;
+        color: #ffe3e3;
+    }
+
+    .btn-clear::before {
+        content: "\F659";
         font-family: "bootstrap-icons";
         font-size: 15px;
         margin-right: 4px;
@@ -196,3 +261,6 @@ body {
         vertical-align: bottom
     }
 
+.modal-content {
+    background-color: rebeccapurple !important
+}

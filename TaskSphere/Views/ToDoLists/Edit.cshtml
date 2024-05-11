@@ -1,6 +1,6 @@
 ﻿@model ToDoList
 
-
+<h1>Editar Tarefa @Model.TaskName</h1>
 <form asp-action="Edit" method="post">
     <input type="hidden" asp-for="ToDoListId" />
     <div class="form-group mb-3 mb-3">
@@ -14,13 +14,6 @@
         <span class="text-danger" asp-validation-for="TaskDescription"></span>
     </div>
     <div class="form-group mb-3">
-        <label class="control-label mb-2" asp-for="TaskStatus"></label>
-        <select class="form-control" asp-for="TaskStatus">
-            <option value="Em Andamento" selected>Em Andamento</option>
-            <option value="Concluida">Concluída</option>
-        </select>
-    </div>
-    <div class="form-group mb-3">
         <label class="control-label mb-2" asp-for="TaskType"></label>
         <input class="form-control" asp-for="TaskType" type="text" />
         <span class="text-danger" asp-validation-for="TaskType"></span>
@@ -30,16 +23,16 @@
         <input class="form-control" asp-for="StartDate" />
         <span class="text-danger" asp-validation-for="StartDate"></span>
     </div>
-    <div class="form-group mb-3">
+   @*  <div class="form-group mb-3">
         <label class="control-label mb-2" asp-for="EndDate"></label>
         <input class="form-control" asp-for="EndDate" type="date" />
         <span class="text-danger" asp-validation-for="EndDate"></span>
-    </div>
+    </div> *@
 
     <div class="row gap-2">
 
         <a class="btn btn btn-back col-md" asp-action="Index">Cancelar</a>
-        <button class="btn-toDoList col-md" type="submit">Cadastrar</button>
+        <button class="btn-create col-md" type="submit">Editar</button>
     </div>
 
 </form>

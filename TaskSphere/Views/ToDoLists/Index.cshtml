@@ -1,6 +1,6 @@
 ﻿@model List<ToDoList>
-<div class="container mt-3">
-
+<div class="container-fluid mt-3">
+    <h1 class="my-3 text-center">Lista de Tarefas</h1>
     <div class="d-flex flex-wrap justify-content-center">
 
         <form class="d-flex gap-2" asp-controller="ToDoLists" asp-action="Search" method="get">
@@ -12,35 +12,37 @@
             </div>
 
             <div class="flex-grow-1">
-                <select class="form-select" aria-label="Default select example" name="status">
-                    <option value="" checked>Filtrar por status</option>
-                    <option value="Em Andamento">Em Andamento</option>
-                    <option value="Concluida">Concluída</option>
+                <select class="form-control" aria-label="Default select example" name="status">
+                    <option value="">Filtrar por status</option>
+                    <option value="false">Em Andamento</option>
+                    <option value="true">Concluída</option>
 
                 </select>
             </div>
 
             <div class="">
                 <button type="submit" value="Pesquisar" class="btn btn-search">Pesquisar</button>
-                <a asp-action="Index" class="btn btn-backDelete">Limpar Filtro</a>
+                <a asp-action="Index" class="btn btn-clear">Limpar Filtro</a>
             </div>
         </form>
     </div>
 
-    <div class="d-flex flex-wrap mt-3 mx-auto gap-2">
+    <div class="container-fluid">
+
+    <div class="d-flex flex-wrap justify-content-around mt-3 mx-auto gap-4">
         @foreach (var task in Model)
         {
-            <div class="card col-4 my-2 shadow p-2 @(task.TaskStatus == "Em Andamento" ? "borderDoing" : "border-danger")" style="width: 24%;">
+            <div class="card col-md-3 my-2 shadow p-2 @(task.TaskStatus == "Em Andamento" ? "borderDoing" : "border-danger")">
                 <div class="card-body d-flex flex-column @(task.TaskStatus == "Em Andamento" ? "doing" : "done")" style="border-radius: 20px">
 
-                   @*  Head *@
-                <div class="d-flex justify-content-between">
-                <h5 class="card-title">@task.TaskName</h5>
-                <a class="btn-cardInfo text-center" asp-action="Detail" asp-route-id="@task.ToDoListId"><i class="bi bi-info-circle"></i> Info</a>
-                </div>
+                    @*  Head *@
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title">@task.TaskName</h5>
+                        <a class="btn-cardInfo text-center" asp-action="Detail" asp-route-id="@task.ToDoListId"><i class="bi bi-info-circle"></i> Info</a>
+                    </div>
 
 
-                @* @* Body *@
+                    @* @* Body *@
 
                     <div class="row mb-3">
                         <div class="col-md-6 fw-light">Inicio: @task.StartDate</div>
@@ -55,6 +57,13 @@
 
                     <div class="flex-bottom mt-auto">
                         #@task.TaskType
+
+                        <form asp-action="ToggleTaskStatus" asp-route-id="@task.ToDoListId">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="toggleSwitch" onchange="this.form.submit()" @(task.IsCompleted ? "checked" : "")>
+                                <label class="form-check-label" for="toggleSwitch">Alterar Status</label>
+                            </div>
+                        </form>
 
                         <div class="d-flex justify-content-between mt-2 mb-0">
                             <span class="cardStatus py-1 px-2">@task.TaskStatus</span>
@@ -72,21 +81,22 @@
             <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <div class="modal-header border-none">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tem certeza que deseja deletar?</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            Esta operação não poderá ser desfeita.
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-back" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-toDoList">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@task.ToDoListId"><i class="bi bi-trash"></i> Deletar</a>
                         </div>
                     </div>
                 </div>
             </div>
         }
+    </div>
     </div>
 </div>
 
